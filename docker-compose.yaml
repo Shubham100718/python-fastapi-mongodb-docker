@@ -26,6 +26,8 @@ services:
       # ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: abc
+    links:
+      - mongo
     depends_on:
       - mongo
 
@@ -38,9 +40,10 @@ services:
     environment: 
       MONGO_INITDB_ROOT_USERNAME: user
       MONGO_INITDB_ROOT_PASSWORD: pass
+    links:
+      - mongo
     depends_on:
       - mongo
-
 volumes:
   mongo-data:
     driver: local
